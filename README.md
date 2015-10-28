@@ -3,7 +3,7 @@
 The purpose of this style guide is to provide guidance on building Aurelia applications by showing the conventions that I use and, more importantly.
 
 ##About the this style guide
-While this guide explains the what, why and how, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns.
+This guide explains the what and why and how, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns.
 
 ##Table of Content
  1. [Startup And Configuration](#startup-and-configuration)
