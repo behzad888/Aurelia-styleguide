@@ -2,5 +2,22 @@
 
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly.
 
-#About the this style guide
+##About the this style guide
 While this guide explains the what, why and how, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns.
+
+##Table of Content
+ 1. [Startup & Configuration](#)
+ 2. [Views and ViewModels](#)
+ 3. [Templating](#)
+ 4. [Routing](#)
+ 5. [Extending HTML](#)
+ 6. [Eventing](#)
+ 7. [HTTP Client](#)
+ 8. [Debugging](#)
+ 9. [Customization](#)
+ 10. [JSHint](#)
+ 11. [Naming](#)
+ 12. [Animations](#)
+ 13. [Compiler Options](#)
+ 14. [Doc Generated](#)
+ 15. [Testing](#)
