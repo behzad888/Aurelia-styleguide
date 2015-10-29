@@ -7,7 +7,7 @@ This guide explains the *what* , *why* and *how* to see them in practice. This g
 
 ##Table of Content
  1. [Application Bootstrap Config](#application-bootstrap-config)
- 2. [Startup And Configuration](#startup-and-configuration)
+ 2. [Responsibility](#responsibility)
  3. [Views and ViewModels](#)
  4. [Templating](#)
  5. [Routing](#)
@@ -43,7 +43,7 @@ Aurelia was originally designed for Evergreen Browsers. This includes Chrome, Fi
 
 **[Back to top](#table-of-content)**
 
-##Startup And Configuration
+##Responsibility
 Most platforms have a "main" or entry point for code execution. Aurelia is no different. If you've read the Get Started page, then you've seen the aurelia-app attribute. Simply place this on an HTML element and Aurelia's bootstrapper will load an app.js and app.html, databind them together and inject them into the DOM element on which you placed that attribute.
 
 The folowing example defines the `app`
