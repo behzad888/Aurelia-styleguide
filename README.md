@@ -7,7 +7,7 @@ This guide explains the *what* , *why* and *how* to see them in practice. This g
 
 ##Table of Content
  1. [Application Bootstrap Config](#application-bootstrap-config)
- 2. [Responsibility](#responsibility)
+ 2. [Single Responsibility](#single-responsibility)
  3. [Views and ViewModels](#)
  4. [Templating](#)
  5. [Routing](#)
@@ -62,7 +62,7 @@ Aurelia looks for a JavaScript file with the same name in the `src` directory fo
 
 **[Back to top](#table-of-content)**
 
-##Responsibility
+##Single Responsibility
 Most platforms have a "main" or entry point for code execution. Aurelia is no different. If you've read the Get Started page, then you've seen the aurelia-app attribute. Simply place this on an HTML element and Aurelia's bootstrapper will load an app.js and app.html, databind them together and inject them into the DOM element on which you placed that attribute.
 
 The folowing example defines the `app`
