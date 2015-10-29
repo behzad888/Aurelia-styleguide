@@ -79,8 +79,24 @@ export class App {
   activate() {
    this.message = "Hello, World!";
   }
+  
+  changeMessage(){
+   this.message = "Goodbye!";
+  }
 }
 
 ```
+Once Aurelia finds and activates app.js, the framework will try to load an app.html file to function as the view for the model. We’ll create app.html
+
+```html
+<template>
+    <div>
+        <div>${message}</div>
+        <button click.trigger="changeMessage()">Say Goodbye</button>
+    </div>
+</template>
+
+```
+
 
 **[Back to top](#table-of-content)**
