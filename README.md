@@ -41,6 +41,25 @@ Aurelia was originally designed for Evergreen Browsers. This includes Chrome, Fi
 </script>
 ```
 
+Let's give our app the name `sample-app` and reflect this in the body tag of `index.html`
+```html
+<body aurelia-app="sample-app">
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+      System.config({
+        "paths": {
+          "*": "src/*.js"
+        }
+      });
+    </script>
+    <script>
+      System.import('aurelia-bootstrapper');
+    </script>
+  </body>
+```
+Aurelia looks for a JavaScript file with the same name in the `src` directory for the main app config details.
+
 **[Back to top](#table-of-content)**
 
 ##Responsibility
