@@ -8,7 +8,7 @@ This guide explains the *what* , *why* and *how* to see them in practice. This g
 ##Table of Content
  1. [Application Bootstrap Config](#application-bootstrap-config)
  2. [Single Responsibility](#single-responsibility)
- 3. [Views and ViewModels](#views-and-viewModels)
+ 3. [Views and ViewModels](#views-and-viewmodels)
  - [Templating](#)
  - [Routing](#)
  - [Extending HTML](#)
@@ -101,9 +101,58 @@ Once Aurelia finds and activates app.js, the framework will try to load an app.h
 **[Back to top](#table-of-content)**
 
 ##Views and ViewModels
+In Aurelia, user interface elements are composed of view and view-model pairs. The view is written with HTML and is rendered into the DOM. The view-model is written with JavaScript and provides data and behavior to the view. The templating engine and/or DI are responsible for creating these pairs and enforcing a predictable lifecycle for the process. Once instantiated, Aurelia's powerful databinding links the two pieces together allowing changes in your data to be reflected in the view and vice versa. This Separation of Concerns is great for developer/designer collaboration, maintainability, architectural flexibility, and even source control.
+
 ###Dependency Injection
 
+let's define a typical view-model class
+```javascript
+
+/* recommended  */
+
+/* App.js */
+import {inject} from 'aurelia-framework';
+import {HttpClient} from 'aurelia-fetch-client';
+
+@inject()
+export class App {
+  constructor(http) {
+   this.http = http;
+  }
+
+```
+For static inject use this 
+```javascript
+/* recommended  */
+
+/* App.js */
+import {HttpClient} from 'aurelia-fetch-client';
 
 
+export class App {
+  static inject = [HttpClient];
+  constructor(http) {
+    this.http = http
+  }
+
+```
+If you are working with TypeScript, you can use the --emitDecoratorMetadata compiler flag along with Aurelia's @autoinject decorator to enable the framework to read the standard TS type information. As a result, there's no need to duplicate the types. Here's what that looks like:
+```javascript
+/* recommended  */
+
+/* App.ts */
+import {autoinject} from 'aurelia-framework';
+import {HttpClient} from 'aurelia-fetch-client';
+
+@autoinject
+export class CustomerDetail {
+    constructor(private http:HttpClient) {
+        this.http = http;
+    }
+}
+```
+
+###Resolver
+When explicitly declaring dependencies, it's important to know that they don't have to be just constructor types. They can also be instances of `resolvers`
 
 **[Back to top](#table-of-content)**
