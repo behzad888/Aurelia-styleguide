@@ -8,20 +8,20 @@ This guide explains the *what* , *why* and *how* to see them in practice. This g
 ##Table of Content
  1. [Application Bootstrap Config](#application-bootstrap-config)
  2. [Single Responsibility](#single-responsibility)
- 3. [Views and ViewModels](#)
- 4. [Templating](#)
- 5. [Routing](#)
- 6. [Extending HTML](#)
- 7. [Eventing](#)
- 8. [HTTP Client](#)
- 9. [Debugging](#)
- 10. [Customization](#)
- 11. [JSHint](#)
- 12. [Naming](#)
- 13. [Animations](#)
- 14. [Compiler Options](#)
- 15. [Doc Generated](#)
- 16. [Testing](#)
+ 3. [Views and ViewModels](#views-and-viewModels)
+ - [Templating](#)
+ - [Routing](#)
+ - [Extending HTML](#)
+ - [Eventing](#)
+ - [HTTP Client](#)
+ - [Debugging](#)
+ - [Customization](#)
+ - [JSHint](#)
+ - [Naming](#)
+ - [Animations](#)
+ - [Compiler Options](#)
+ - [Doc Generated](#)
+ - [Testing](#)
 
 ##Application Bootstrap Config
 Aurelia was originally designed for Evergreen Browsers. This includes Chrome, Firefox, IE11 and Safari 8. However, we have identified how to support IE9 and above. To make this work, you need to add an additional polyfill for MutationObservers. This can be achieved by a jspm install of `github:polymer/mutationobservers`. Then wrap the call to `aurelia-bootstrapper` as follows:
@@ -97,6 +97,13 @@ Once Aurelia finds and activates app.js, the framework will try to load an app.h
 </template>
 
 ```
+
+**[Back to top](#table-of-content)**
+
+##Views and ViewModels
+###Dependency Injection
+
+
 
 
 **[Back to top](#table-of-content)**
