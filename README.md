@@ -17,12 +17,11 @@ This guide explains the *what* , *why* and *how* to see them in practice. This g
  9. [Debugging](#)
  10. [Customization](#)
  11. [JSHint](#)
- 12. [JSLint](#)
- 13. [Naming](#)
- 14. [Animations](#)
- 15. [Compiler Options](#)
- 16. [Doc Generated](#)
- 17. [Testing](#)
+ 12. [Naming](#)
+ 13. [Animations](#)
+ 14. [Compiler Options](#)
+ 15. [Doc Generated](#)
+ 16. [Testing](#)
 
 ##Application Bootstrap Config
 Aurelia was originally designed for Evergreen Browsers. This includes Chrome, Firefox, IE11 and Safari 8. However, we have identified how to support IE9 and above. To make this work, you need to add an additional polyfill for MutationObservers. This can be achieved by a jspm install of `github:polymer/mutationobservers`. Then wrap the call to `aurelia-bootstrapper` as follows:
