@@ -114,7 +114,7 @@ let's define a typical view-model class
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 
-@inject()
+@inject(HttpClient)
 export class App {
   constructor(http) {
    this.http = http;
