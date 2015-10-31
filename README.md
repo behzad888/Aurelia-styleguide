@@ -136,6 +136,19 @@ export class App {
   }
 
 ```
+```javascript
+/* avoid */
+
+/* App.js */
+import {inject} from 'aurelia-framework';
+import {HttpClient} from 'aurelia-fetch-client';
+
+export class App {
+  constructor() {
+   this.http = new HttpClient();
+  }
+
+```
 If you are working with TypeScript, you can use the --emitDecoratorMetadata compiler flag along with Aurelia's @autoinject decorator to enable the framework to read the standard TS type information. As a result, there's no need to duplicate the types. Here's what that looks like:
 ```javascript
 /* recommended  */
