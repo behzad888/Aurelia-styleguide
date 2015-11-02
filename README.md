@@ -144,6 +144,20 @@ export class App {
 /* avoid */
 
 /* App.js */
+import {inject} from 'aurelia-framework'; // avoid from this line
+import {HttpClient} from 'aurelia-fetch-client';
+
+export class App {
+ static inject = [HttpClient];
+  constructor(http) {
+   this.http = http;
+  }
+
+```
+```javascript
+/* avoid */
+
+/* App.js */
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 
