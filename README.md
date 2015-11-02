@@ -176,7 +176,7 @@ import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 
 @autoinject
-export class CustomerDetail {
+export class App {
     constructor(private http:HttpClient) {
         this.http = http;
     }
@@ -185,5 +185,35 @@ export class CustomerDetail {
 
 ###Resolver
 When explicitly declaring dependencies, it's important to know that they don't have to be just constructor types. They can also be instances of `resolvers`
+```javascript
+/* recommended  */
+
+/* app.js  */
+import {Lazy, inject} from 'aurelia-framework';
+import {HttpClient} from 'aurelia-fetch-client';
+
+@inject(Lazy.of(HttpClient))
+export class App{	  
+	constructor(getHTTP){
+		this.http = getHTTP;
+	}
+}
+```
+For `static` use this:
+```javascript
+/* recommended  */
+
+/* app.js  */
+import {Lazy} from 'aurelia-framework';
+import {HttpClient} from 'aurelia-fetch-client';
+
+export class App {	  
+ static inject = [Lazy.of(HttpClient)]
+	constructor(getHTTP) {
+		this.http = getHTTP;
+	}
+}
+```
+
 
 **[Back to top](#table-of-content)**
