@@ -141,7 +141,7 @@ export class App {
 
 ```
 ```javascript
-/* avoid */
+/* recommended */
 
 /* App.js */
 import {inject} from 'aurelia-framework'; // avoid from this line
