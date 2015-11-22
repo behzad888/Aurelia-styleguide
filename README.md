@@ -22,6 +22,7 @@ This guide explains the *what* , *why* and *how* to see them in practice. This g
  - [Compiler Options](#)
  - [Doc Generated](#)
  - [Testing](#)
+ - [Contributing](#contributing)
 
 ##Application Bootstrap Config
 Aurelia was originally designed for Evergreen Browsers. This includes Chrome, Firefox, IE11 and Safari 8. However, we have identified how to support IE9 and above. To make this work, you need to add an additional polyfill for MutationObservers. This can be achieved by a jspm install of `github:polymer/mutationobservers`. Then wrap the call to `aurelia-bootstrapper` as follows:
@@ -216,4 +217,9 @@ export class App {
 ```
 
 
+**[Back to top](#table-of-content)**
+
+
+###Contributing
+Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repository. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
 **[Back to top](#table-of-content)**
