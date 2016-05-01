@@ -155,6 +155,23 @@ export class App {
   }
 
 ```
+ES2016:
+```javascript
+/* recommended */
+
+/* App.js */
+import {inject} from 'aurelia-framework'; // avoid from this line
+import {HttpClient} from 'aurelia-fetch-client';
+
+export class App {
+  static get parameters() {
+    return [[HttpClient]];
+  }
+  constructor(http) {
+   this.http = http;
+  }
+
+```
 ```javascript
 /* avoid */
 
