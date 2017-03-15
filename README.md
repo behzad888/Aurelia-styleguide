@@ -24,10 +24,10 @@ This guide explains the *what* , *why* and *how* to see them in practice. This g
  - [Testing](#)
  - [Contributing](#contributing)
 
-## Single Responsibility
+## 1. Single Responsibility
 
 ### Rule of 1
-###### [Style [A001](#style-a001)]
+###### [Style [01-01](#style-01-01)]
 
 If you use Typescript language follow [Typescript guideline](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines) please.
 
@@ -39,10 +39,116 @@ If you use Typescript language follow [Typescript guideline](https://github.com/
 
   *Why?*: One component per file avoids hidden bugs that often arise when combining components in a file where they may share variables, create unwanted closures, or unwanted coupling with dependencies.
 
+  The following negative example defines the `App` component, bootstraps the app, defines the `User` model object, and loads models from the server ... all in the same file. **Don't do this**.
+
+  ```typescript
+    /* avoid */
+    import {HttpClient} from 'aurelia-fetch-client';
+    import {autoinject} from 'aurelia-framework';
+    import 'fetch';
+
+    class User{
+      id: number;
+      name: string;
+    }
+
+    @autoinject
+    export class App {
+      public user = new User();
+
+      constructor(private http: HttpClient) {
+        http.configure(config => {
+          config
+            .useStandardConfiguration()
+            .withBaseUrl('https://api.github.com/');
+        });
+      }
+
+      public activate() {
+        return this.http.fetch('users/behzad888')
+          .then(user => this.user = user as User);
+      }
+    }
+  ```
+
+  It is a better practice to redistribute the component and its supporting classes into their own, dedicated files.
+
+  App.ts
+  ```typescript
+  /* recommended */
+  import {autoinject} from 'aurelia-framework';
+  import User from './models/user';
+  import UserService from './services/userService';
+  import 'fetch';
+
+  @autoinject
+  export class App {
+      public user: {} = new User();
+      public userService: UserService;
+
+      constructor(private userService: UserService) {
+        this.userService = userService;
+      }
+
+      public activate() {
+        return this.userService.getSingleUser('behzad888')
+          .then(user => this.user = user as User);
+      }
+    }
+
+  ```
+
+  User.ts
+  ```typescript
+  /* recommended */
+  export default class User {
+    id: number;
+    name: string;
+  }
+  ```
+
+  Base.ts
+  ```typescript
+    /* recommended */
+    import {HttpClient} from 'aurelia-fetch-client';
+    import {autoinject} from 'aurelia-framework';
+    import 'fetch';
+
+    @autoinject
+    export default class BaseService {
+      public http: HttpClient;
+      constructor(private http: HttpClient) {
+        this.http = http.configure(config => {
+          config
+            .useStandardConfiguration()
+            .withBaseUrl('https://api.github.com/');
+        });
+      }
+    }
+  ```
+
+  UserService.ts
+  ```typescript
+  /* recommended */
+  import Base from './base';
+
+  export default class UserService extends BaseService {
+    /**
+    * Return the promise 
+    * 
+    * Return the raw comment string for the given node.
+    */
+    getSingleUser(userName) {
+      return return this.http.fetch('users/' + userName);
+    }
+  }
+  ```
+  As the app grows, this rule becomes even more important.
+
 **[Back to top](#table-of-content)**
 
 ### Small Functions
-###### [Style [A002](#style-a002)]
+###### [Style [01-02](#style-01-02)]
 
  - Define small functions, no more than 75 LOC (less is better).
 
