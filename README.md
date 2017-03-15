@@ -24,7 +24,7 @@ This guide explains the *what* , *why* and *how* to see them in practice. This g
  - [Testing](#)
  - [Contributing](#contributing)
 
-## 1. Single Responsibility
+## Single Responsibility
 
 ### Rule of 1
 ###### [Style [01-01](#style-01-01)]
