@@ -5,7 +5,7 @@ The purpose of this style guide is to provide guidance on building Aurelia appli
 ##About the this style guide
 This guide explains the *what* , *why* and *how* to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns.
 
-##Table of Content
+## Table of Content
  1. [Single Responsibility](#single-responsibility)
  2. [Application Bootstrap Config](#application-bootstrap-config)
  3. [Views and ViewModels](#views-and-viewmodels)
@@ -24,7 +24,7 @@ This guide explains the *what* , *why* and *how* to see them in practice. This g
  - [Testing](#)
  - [Contributing](#contributing)
 
-##Single Responsibility
+## Single Responsibility
 
 ### Rule of 1
 ###### [Style [A001](#style-a001)]
@@ -58,7 +58,7 @@ If you use Typescript language follow [Typescript guideline](https://github.com/
 
 **[Back to top](#table-of-content)**
 
-##Application Bootstrap Config
+## Application Bootstrap Config
 Aurelia was originally designed for Evergreen Browsers. This includes Chrome, Firefox, IE11 and Safari 8. However, we have identified how to support IE9 and above. To make this work, you need to add an additional polyfill for MutationObservers. This can be achieved by a jspm install of `github:polymer/mutationobservers`. Then wrap the call to `aurelia-bootstrapper` as follows:
 
 ```html
@@ -126,10 +126,10 @@ bootstrap(async aurelia => {
 
 **[Back to top](#table-of-content)**
 
-##Views and ViewModels
+## Views and ViewModels
 In Aurelia, user interface elements are composed of view and view-model pairs. The view is written with HTML and is rendered into the DOM. The view-model is written with JavaScript and provides data and behavior to the view. The templating engine and/or DI are responsible for creating these pairs and enforcing a predictable lifecycle for the process. Once instantiated, Aurelia's powerful databinding links the two pieces together allowing changes in your data to be reflected in the view and vice versa. This Separation of Concerns is great for developer/designer collaboration, maintainability, architectural flexibility, and even source control.
 
-###Dependency Injection
+### Dependency Injection
 
 let's define a typical view-model class
 ```javascript
