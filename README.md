@@ -2,7 +2,7 @@
 
 The purpose of this style guide is to provide guidance on building Aurelia applications by showing the conventions that I use and, more importantly.
 
-##About the this style guide
+## About the this style guide
 This guide explains the *what* , *why* and *how* to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns.
 
 ## Table of Content
@@ -222,7 +222,7 @@ export class App {
 }
 ```
 
-###Resolver
+### Resolver
 When explicitly declaring dependencies, it's important to know that they don't have to be just constructor types. They can also be instances of `resolvers`
 ```javascript
 /* recommended  */
@@ -258,6 +258,6 @@ export class App {
 **[Back to top](#table-of-content)**
 
 
-###Contributing
+### Contributing
 Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repository. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
 **[Back to top](#table-of-content)**
