@@ -6,8 +6,8 @@ The purpose of this style guide is to provide guidance on building Aurelia appli
 This guide explains the *what* , *why* and *how* to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns.
 
 ##Table of Content
- 1. [Application Bootstrap Config](#application-bootstrap-config)
- 2. [Single Responsibility](#single-responsibility)
+ 1. [Single Responsibility](#single-responsibility)
+ 2. [Application Bootstrap Config](#application-bootstrap-config)
  3. [Views and ViewModels](#views-and-viewmodels)
  - [Templating](#)
  - [Routing](#)
@@ -24,24 +24,66 @@ This guide explains the *what* , *why* and *how* to see them in practice. This g
  - [Testing](#)
  - [Contributing](#contributing)
 
+##Single Responsibility
+
+### Rule of 1
+###### [Style [A001](#style-a001)]
+
+If you use Typescript language follow [Typescript guideline](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines) please.
+
+- Define 1 component per file, recommended to be less than 400 lines of code.
+
+  *Why?*: One component per file promotes easier unit testing and mocking.
+
+  *Why?*: One component per file makes it far easier to read, maintain, and avoid collisions with teams in source control.
+
+  *Why?*: One component per file avoids hidden bugs that often arise when combining components in a file where they may share variables, create unwanted closures, or unwanted coupling with dependencies.
+
+**[Back to top](#table-of-content)**
+
+### Small Functions
+###### [Style [A002](#style-a002)]
+
+ - Define small functions, no more than 75 LOC (less is better).
+
+  *Why?*: Small functions are easier to test, especially when they do one thing and serve one purpose.
+
+  *Why?*: Small functions promote reuse.
+
+  *Why?*: Small functions are easier to read.
+
+  *Why?*: Small functions are easier to maintain.
+
+  *Why?*: Small functions help avoid hidden bugs that come with large functions that share variables with external scope, create unwanted closures, or unwanted coupling with dependencies.
+
+**[Back to top](#table-of-content)**
+
 ##Application Bootstrap Config
 Aurelia was originally designed for Evergreen Browsers. This includes Chrome, Firefox, IE11 and Safari 8. However, we have identified how to support IE9 and above. To make this work, you need to add an additional polyfill for MutationObservers. This can be achieved by a jspm install of `github:polymer/mutationobservers`. Then wrap the call to `aurelia-bootstrapper` as follows:
 
 ```html
 <!-- recommended -->
+<!-- Based on Aurelia Hub -->
 
-<script src="jspm_packages/system.js"></script>
-<script src="config.js"></script>
-<script>
-  // Loads WeakMap polyfill needed by MutationObservers
-  System.import('core-js').then(function() {
-    // Imports MutationObserver polyfill
-    return System.import('polymer/mutationobservers');
-  }).then(function() {
-    // Ensures start of Aurelia when all required IE9 dependencies are loaded
-    System.import('aurelia-bootstrapper');
-  });
-</script>
+<!doctype html>
+<html>
+  <head>
+    <title>My App</title>
+  </head>
+  <body>
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+      SystemJS.import('raf/polyfill').then(function() {
+        return SystemJS.import('aurelia-polyfills');
+      }).then(function() {
+        return SystemJS.import('webcomponents/webcomponentsjs/MutationObserver');
+      }).then(function() {
+        SystemJS.import('aurelia-bootstrapper');
+      });
+    </script>
+  </body>
+</html>
 ```
 
 Let's give our app the name `sample-app` and reflect this in the body tag of `index.html`
@@ -65,42 +107,21 @@ Let's give our app the name `sample-app` and reflect this in the body tag of `in
 ```
 Aurelia looks for a JavaScript file with the same name in the `src` directory for the main app config details.
 
-**[Back to top](#table-of-content)**
-
-##Single Responsibility
-Most platforms have a "main" or entry point for code execution. Aurelia is no different. If you've read the Get Started page, then you've seen the aurelia-app attribute. Simply place this on an HTML element and Aurelia's bootstrapper will load an app.js and app.html, databind them together and inject them into the DOM element on which you placed that attribute.
-
-The folowing example defines the `app`
-
+In case you use Webpack, you can replace the `aurelia-bootstrapper-webpack` package with the `./src/main` entry file in the `aurelia-bootstrapper` bundle defined inside of `webpack.config.js`, and call the bootstrapper manually:
 ```javascript
-/**
-* App.js
-*/
-export class App {
-  constructor() {
-   this.message = "";
-  }
-  
-  activate() {
-   this.message = "Hello, World!";
-  }
-  
-  changeMessage(){
-   this.message = "Goodbye!";
-  }
-}
+/* recommended */
+/* Based on Aurelia Hub */
 
-```
-Once Aurelia finds and activates app.js, the framework will try to load an app.html file to function as the view for the model. We’ll create app.html
+import {bootstrap} from 'aurelia-bootstrapper-webpack';
 
-```html
-<template>
-    <div>
-        <div>${message}</div>
-        <button click.trigger="changeMessage()">Say Goodbye</button>
-    </div>
-</template>
+bootstrap(async aurelia => {
+  aurelia.use
+    .standardConfiguration()
+    .developmentLogging();
 
+  await aurelia.start();
+  aurelia.setRoot('app', document.body);
+});
 ```
 
 **[Back to top](#table-of-content)**
