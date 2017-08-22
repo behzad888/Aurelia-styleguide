@@ -165,6 +165,7 @@ If you use Typescript language follow [Typescript guideline](https://github.com/
 **[Back to top](#table-of-content)**
 
 ## Application Bootstrap Config
+###### [Style [01-02](#style-01-02)]
 Aurelia was originally designed for Evergreen Browsers. This includes Chrome, Firefox, IE11 and Safari 8. However, we have identified how to support IE9 and above. To make this work, you need to add an additional polyfill for MutationObservers. This can be achieved by a jspm install of `github:polymer/mutationobservers`. Then wrap the call to `aurelia-bootstrapper` as follows:
 
 ```html
